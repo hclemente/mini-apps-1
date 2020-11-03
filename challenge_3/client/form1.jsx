@@ -1,15 +1,16 @@
+import TextInput from './textinput.js';
+
 class Form1 extends React.Component {
   constructor (props) {
     super (props);
     this.state = {
       name: '',
       email: '',
-      pass: ''
+      pass: '',
+      formNum: 'form1'
     }
     this.handleInput = this.handleInput.bind(this);
-    // this.handleInputName  = this.handleInputName.bind(this);
-    // this.handleInputEmail  = this.handleInputEmail.bind(this);
-    // this.handleInputPass = this.handleInputPass.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput (event) {
@@ -22,66 +23,54 @@ class Form1 extends React.Component {
     this.setState(newState);
   }
 
-  // handleInputName (event) {
-  //   const target = event.target;
-  //   const name = target.value;
-  //   let newState = Object.assign({}, this.state);
-  //   newState.name = name;
-  //   this.setState(newState);
-  // }
-
-  // handleInputEmail (event) {
-  //   const target = event.target;
-  //   const email = target.value;
-  //   let newState = Object.assign({}, this.state);
-  //   newState.email = email;
-  //   this.setState(newState);
-  // }
-
-  // handleInputPass (event) {
-  //   const target = event.target;
-  //   const pass = target.value;
-  //   let newState = Object.assign({}, this.state);
-  //   newState.pass = pass;
-  //   this.setState(newState);
-  // }
+  handleSubmit (event) {
+    event.preventDefault();
+    this.props.handleNext(this.state);
+  }
 
   render () {
+    let label = ['Name: ', 'Email: ', 'Password: '];
+    let properties = ['name', 'email', 'pass'];
+    let types = ['text', 'text', 'password'];
+    let state = this.state;
     return (
 
-            <form>
+            <form onSubmit={this.handleSubmit}>
             <h1>Form 1</h1>
-              <label>
-              Name:
-              <input
-                type='text'
-                name='name'
-                value={this.state.name}
-                onChange={this.handleInput} />
-              </label>
-              <br/>
-              <label>
-              Email:
-              <input
-                type='text'
-                name='email'
-                value={this.state.email}
-                onChange={this.handleInput} />
-              </label>
-              <br/>
-              <label>
-              Password:
-              <input
-                type='password'
-                name='pass'
-                value={this.state.pass}
-                onChange={this.handleInput} />
-              </label>
-              <br/>
-              <button onClick={this.props.firstNext}>Next</button>
+              {label.map((input, index) =>
+              <TextInput name={properties[index]}
+              value={this.state[properties[index]]}
+              inputType={types[index]}
+              label={label[index]}
+              change={this.handleInput}
+              key={index}
+              />
+              )}
+              <button>Next</button>
             </form>
     )
   }
 }
 
 export default Form1;
+
+{/* <TextInput name={properties[0]}
+value={this.state[properties[0]]}
+inputType={types[0]}
+label={inputs[0]}
+change={this.handleInput}
+/>
+<br/>
+<TextInput name={properties[1]}
+value={this.state[properties[1]]}
+inputType={types[1]}
+label={inputs[1]}
+change={this.handleInput}
+/>
+<br/>
+<TextInput name={properties[2]}
+value={this.state[properties[2]]}
+inputType={types[2]}
+label={inputs[2]}
+change={this.handleInput}
+/> */}

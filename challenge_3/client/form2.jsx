@@ -1,3 +1,5 @@
+import TextInput from './textinput.js';
+
 class Form2 extends React.Component {
   constructor (props) {
     super (props);
@@ -7,9 +9,11 @@ class Form2 extends React.Component {
       city: '',
       state: '',
       zip: '',
-      phone: ''
+      phone: '',
+      formNum: 'form2'
     }
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput (event) {
@@ -22,31 +26,29 @@ class Form2 extends React.Component {
     this.setState(newState);
   }
 
+  handleSubmit (event) {
+    event.preventDefault();
+    this.props.handleNext(this.state);
+  }
+
   render () {
+    let label = ['Address Line 1: ', 'Address Line 2: ', 'City: ', 'State: ', 'Zip: ', 'Phone: '];
+    let properties = ['addressline1', 'addressline2', 'city', 'state', 'zip', 'phone'];
+    let types = ['text', 'text', 'text', 'text', 'text', 'text'];
     return (
 
-            <form>
+            <form onSubmit={this.handleSubmit}>
             <h1>Form 2</h1>
-              <label>
-              Address Line 1:
-              <input
-                type='text'
-                name='addressline1'
-                value={this.state.addressline1}
-                onChange={this.handleInput} />
-              </label>
-              <br/>
-              <label>
-              Address Line 2:
-              <input
-                type='text'
-                name='addressline2'
-                value={this.state.addressline2}
-                onChange={this.handleInput} />
-              </label>
-
-              <br/>
-              <button onClick={this.props.secondNext}>Next</button>
+            {label.map((input, index) =>
+              <TextInput name={properties[index]}
+              value={this.state[properties[index]]}
+              inputType={types[index]}
+              label={label[index]}
+              change={this.handleInput}
+              key={index}
+              />
+              )}
+              <button>Next</button>
             </form>
     )
   }

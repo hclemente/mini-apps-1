@@ -2,6 +2,7 @@
 // import ReactDOM from './react-dom.development.js';
 import Form1 from './form1.js'
 import Form2 from './form2.js'
+import Form3 from './form3.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,8 +14,7 @@ class App extends React.Component {
         form3: {}
       }
       this.createClick = this.createClick.bind(this);
-      this.firstNext = this.firstNext.bind(this);
-      this.secondNext = this.secondNext.bind(this);
+      this.handleNext = this.handleNext.bind(this);
       this.completePurchase = this.completePurchase.bind(this);
   }
 
@@ -24,22 +24,20 @@ class App extends React.Component {
     }));
   }
 
-  firstNext () {
-    this.setState((state) => ({
-      page: 2
-    }));
+  handleNext (form) {
+    let newState = Object.assign({}, this.state);
+    newState[form.formNum] = form;
+    newState.page++;
+    console.log(newState);
+    this.setState(newState);
   }
 
-  secondNext () {
-    this.setState((state) => ({
-      page: 3
-    }));
-  }
-
-  completePurchase () {
-    this.setState((state) => ({
-      page: 0
-    }));
+  completePurchase (form) {
+    let newState = Object.assign({}, this.state);
+    newState[form.formNum] = form;
+    newState.page = 0;
+    console.log(newState);
+    this.setState(newState);
   }
 
   render () {
@@ -50,37 +48,17 @@ class App extends React.Component {
               <button onClick={this.createClick}>Create Checkout</button>
               </div>)
     } else if (this.state.page === 1) {
-      page = <Form1 firstNext={this.firstNext}/>
+      page = <Form1 handleNext={this.handleNext}/>
     } else if (this.state.page === 2) {
-      page = <Form2 secondNext={this.secondNext}/>
+      page = <Form2 handleNext={this.handleNext}/>
     } else if (this.state.page === 3) {
       page = <Form3 completePurchase={this.completePurchase}/>
     }
-
     return (<div>
             {page}
           </div>)
   }
 }
-
-// const Form2 = (props) => (
-//   <div>
-//   <h1>Form 2</h1>
-//   <button onClick={props.secondNext}>Next</button>
-//   </div>
-// )
-
-const Form3 = (props) => (
-  <div>
-  <h1>Form 3</h1>
-  <button onClick={props.completePurchase}>Purchase</button>
-  </div>
-)
-
-// const App = () => (
-//   <div>Hello World</div>
-// )
-
 
 
 ReactDOM.render(<App/>, document.getElementById('app'));
