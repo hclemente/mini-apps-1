@@ -1,0 +1,7 @@
+import react from 'react';
+import ReactDOM from 'react-dom';
+
+const App = () => /*#__PURE__*/React.createElement("div", null, "Hello World");
+
+export default App;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NsaWVudC9hcHAuanN4Il0sIm5hbWVzIjpbInJlYWN0IiwiUmVhY3RET00iLCJBcHAiXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLEtBQVAsTUFBa0IsT0FBbEI7QUFDQSxPQUFPQyxRQUFQLE1BQXFCLFdBQXJCOztBQUVBLE1BQU1DLEdBQUcsR0FBRyxtQkFDViwrQ0FERjs7QUFJQSxlQUFlQSxHQUFmIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCBSZWFjdERPTSBmcm9tICdyZWFjdC1kb20nO1xuXG5jb25zdCBBcHAgPSAoKSA9PiAoXG4gIDxkaXY+SGVsbG8gV29ybGQ8L2Rpdj5cbilcblxuZXhwb3J0IGRlZmF1bHQgQXBwO1xuXG4iXX0=

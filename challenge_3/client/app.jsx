@@ -1,8 +1,9 @@
 import react from 'react';
-import reactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 
-class App extends React.Component {
+const App = () => (
+  <div>Hello World</div>
+)
 
-}
-
+export default App;
 
