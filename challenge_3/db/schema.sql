@@ -30,3 +30,15 @@ create table credit (
   zip_code int not null,
   foreign key (id) references login(id)
 );
+
+-- mysql -u root -p // to boot mysql server
+-- DESCRIBE <table name> // schema
+-- USE <database name> // takes you to the database
+-- INSERT INTO <table name> (column_1,column_2,...) VALUES (value_1,value_2,...);
+-- UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition ID = 3;
+-- quit // exit mysql into directory
+-- DROP TABLE <table name> // drop an existing MySQL table
+-- FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+-- DROP DATABASE databasename;
+-- ALTER TABLE table ADD [COLUMN] column_name column_definition [FIRST|AFTER existing_column];
+-- TRUNCATE [TABLE] table_name;
