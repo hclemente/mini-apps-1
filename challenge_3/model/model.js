@@ -1,4 +1,4 @@
-const db = require('../db/connection.js');
+const db = require('../connection/connection.js');
 
 
 const queryDatabase = (query, data, callback) => {
@@ -10,3 +10,5 @@ const queryDatabase = (query, data, callback) => {
     }
   })
 }
+
+module.exports = queryDatabase;

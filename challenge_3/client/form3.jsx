@@ -7,7 +7,7 @@ class Form3 extends React.Component {
       cardNumber: '',
       expire: '',
       cvv: '',
-      zip: '',
+      ccZip: '',
       formNum: 'form3'
     }
     this.handleInput = this.handleInput.bind(this);
@@ -30,7 +30,7 @@ class Form3 extends React.Component {
 
   render () {
     let label = ['Credit Cart Number: ', 'Expiration Date: ', 'CVV: ', 'Zip Code: '];
-    let properties = ['cardNumber', 'expire', 'cvv', 'zip'];
+    let properties = ['cardNumber', 'expire', 'cvv', 'ccZip'];
     let types = ['number', 'text', 'number', 'number'];
     return (
 
