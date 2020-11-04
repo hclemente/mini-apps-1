@@ -3,6 +3,7 @@
 import Form1 from './form1.js'
 import Form2 from './form2.js'
 import Form3 from './form3.js'
+// import axios from 'axios'
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class App extends React.Component {
     let newState = Object.assign({}, this.state);
     newState[form.formNum] = form;
     newState.page++;
-    console.log(newState);
     this.setState(newState);
   }
 
@@ -36,8 +36,12 @@ class App extends React.Component {
     let newState = Object.assign({}, this.state);
     newState[form.formNum] = form;
     newState.page = 0;
-    console.log(newState);
-    this.setState(newState);
+    let completePurchase = Object.assign({}, this.state.form1, this.state.form2, form);
+    axios.post('/purchase', completePurchase)
+    .then(this.setState(newState))
+    .catch( err => {
+      console.log(err)
+    });
   }
 
   render () {

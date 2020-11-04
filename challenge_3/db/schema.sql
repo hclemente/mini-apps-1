@@ -15,10 +15,10 @@ create table purchases (
   state varchar(50),
   zip_code int,
   phone_number varchar(50),
-  cc_number int not null,
-  expires varchar(50) not null,
-  cvv int not null,
-  cc_zip int not null
+  cc_number bigint null,
+  expires varchar(50) null,
+  cvv int null,
+  cc_zip int null
 );
 
 -- create table contact (

@@ -19,7 +19,6 @@ class Form1 extends React.Component {
     const property = target.name;
     let newState = Object.assign({}, this.state);
     newState[property] = value;
-    console.log(newState);
     this.setState(newState);
   }
 

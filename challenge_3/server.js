@@ -7,9 +7,6 @@ const port = 3000
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
-// app.get('/checkout', (req, res) => {
-//   res.send('Hello World!')
-// })
 
 app.post('/purchase', controller.post)
 
